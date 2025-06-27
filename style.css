@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  background: linear-gradient(skyblue, lightgreen);
+  overflow: hidden;
+  font-family: sans-serif;
+  font-size: 2.5vh; /* Skalierbare Schrift */
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+.road {
+  position: relative;
+  width: 100vw;
+  height: 25vh;
+  background: #444;
+  margin-top: 50vh;
+}
+
+.kart {
+  position: absolute;
+  width: 25vh;
+  height: 15vh;
+  background: url('peach.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 10px;
+  /*animation: drive 5s linear forwards;*/
+}
+
+.kart.hidden {
+  opacity: 0;
+}
+
+.kart.drive {
+  animation: drive 5s linear forwards;
+}
+
+@keyframes drive {
+  0% { right: -30vh; }
+  80% { right: 100%; }
+  100% { right: 100%; }
+}
+
+.item-box {
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  width: 10vh;
+  height: 10vh;
+  background: url('itembox.png');
+  background-size: cover;
+  animation: float 2s ease-in-out infinite;
+  transform: translateX(-50%);
+}
+
+.item-box.hidden {
+  opacity: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -1vh); }
+}
+
+.gutschein {
+  position: absolute;
+  top: 62.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  padding: 4vh 3vh;
+  background: #fff;
+  border: 2px dashed gold;
+  display: none;
+  z-index: 10;
+  text-align: center;
+  font-size: 2.5vh;
+  border-radius: 1vh;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.3);
+}
+
+.gutschein.show {
+  display: block;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.5) translate(-50%, -50%); }
+  to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+}
+
+.item-roulette {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12vh;
+  height: 12vh;
+  overflow: hidden;
+  display: none;
+  background: white;
+  border: 2px solid #000;
+  border-radius: 10px;
+  z-index: 20;
+}
+
+.item-strip {
+  display: flex;
+  flex-direction: column;
+  animation: spin 1s linear infinite;
+}
+
+.item-strip img {
+  width: 100%;
+  height: auto;
+  margin: 1vh 0;
+}
+
+@keyframes spin {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-60vh); }
+}
+
+#playButton {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2vh 4vh;
+  font-size: 3vh;
+  background-color: gold;
+  border: none;
+  border-radius: 1vh;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 100;
+  transition: opacity 0.5s ease;
+}
+
+#playButton.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
